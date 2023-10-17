@@ -9,7 +9,8 @@
       `AIRFLOW_UID=50000`
 
  * 3. __Build the image:__
-    - `docker compose up --build`
+    - `docker compose up airflow-init`
+    - `docker compose up`
  
  * 4. __Check airflow UI:__
     - `Access the following: http://0.0.0.0:8080/`
