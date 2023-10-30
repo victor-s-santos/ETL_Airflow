@@ -1,0 +1,2 @@
+kaggle==1.5.16
+pymongo==4.5.0
