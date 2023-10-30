@@ -15,3 +15,13 @@
  * 4. __Check airflow UI:__
     - `Access the following: http://0.0.0.0:8080/`
     - `And get in by the following credentials: user: airflow; password: airflow`
+
+# Project Schema
+## Dag: processing_fast_food
+### `The dag have necessaries task to download a dataset, send dataset values to mongodb, sanitize the mongo values and finally send the sanitized values to a postgres database. The processing_fast_food dag have the following tasks:`
+   - get_dataset_from_kaggle;
+   - send_values_to_mongo;
+   - sanitize_data;
+   - send_to_postgres;
+   - generate_report;
+   - send_to_postgres;
