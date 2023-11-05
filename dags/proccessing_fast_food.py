@@ -13,7 +13,6 @@ with DAG(dag_id="hello_world_test", start_date=datetime(2023, 1, 1), schedule_in
         "dataset_owner": "joebeachcapital",
         "dataset_name": "fast-food",
     }
-    nome = "Mooooozi"
 
     hello_world = BashOperator(task_id="hello_world", bash_command="echo Hello world!")
     
