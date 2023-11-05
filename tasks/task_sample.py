@@ -1,4 +1,3 @@
-def run_task():
-    return("It Works" * 9000)
-
-run_task()
+def run_task(variable1: str, variable2: str):
+    print(f"Is works: {variable1}, {variable2}")
+    return "Yeeeeeeeeees"
