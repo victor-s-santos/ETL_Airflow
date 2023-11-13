@@ -4,10 +4,12 @@ from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 from tasks.task_sample import run_task
 from tasks.kaggle.export_csv import download_csv
+from tasks.send_csv_to_mongo.main import send_to_mongo
+import os
 
 
 with DAG(dag_id="hello_world_test", start_date=datetime(2023, 1, 1), schedule_interval="0 0 * * *", catchup=False) as dag:
-    dict_credentials = {"username": "your_name", "key": "your_key"}
+    dict_credentials = {"username": os.getenv("KAGGLE_USER"), "key": os.getenv("KAGGLE_KEY")}
     full_dict = {
         "credentials": dict_credentials,
         "dataset_owner": "joebeachcapital",
@@ -30,5 +32,10 @@ with DAG(dag_id="hello_world_test", start_date=datetime(2023, 1, 1), schedule_in
         dag=dag
     )
 
-    # hello_world >> python_hello_world
-    hello_world >> python_hello_world >> task_download_csv
+    task_send_csv = PythonOperator(
+        task_id="send_csv_to_mongo",
+        python_callable=send_to_mongo,
+        dag=dag
+    )
+
+    hello_world >> python_hello_world >> task_download_csv >> task_send_csv
