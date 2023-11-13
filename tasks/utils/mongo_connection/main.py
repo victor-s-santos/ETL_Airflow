@@ -1,4 +1,5 @@
 from pymongo import MongoClient, database, mongo_client
+import os
 
 
 class Mongo:
@@ -37,11 +38,11 @@ class Mongo:
 
 if __name__ == "__main__":
     credentials = {
-        "user": "mongo",
-        "password": "senha",
-        "host": "localhost",
-        "port": 27017,
-        "db_name": "db",
+        "user": os.getenv("MONGOUSER"),
+        "password": os.getenv("MONGOPASSWORD"),
+        "host": os.getenv("MONGOHOST"),
+        "port": os.getenv("MONGOPORT"),
+        "db_name": os.getenv("MONGODBNAME"),
     }
     mongo_obj = Mongo(credentials=credentials)
     mongo_obj.connect_to_mongo()
