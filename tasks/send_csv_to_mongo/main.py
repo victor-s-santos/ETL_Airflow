@@ -17,6 +17,8 @@ def get_csvs()-> list:
     return csv_files_list
 
 def send_to_mongo():
+    """Call the get_csvs() to generate a list of csv files and send file content to mongo db.
+    """
     logging.info("Initializing send_to_mongo")
     list_of_csv_files = get_csvs()
     mongo_credentials = {
